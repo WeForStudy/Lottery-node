@@ -12,4 +12,6 @@ module.exports = (config => {
 	}, [])
 })([
   'admin',
+  'user',
+  'order',
 ])

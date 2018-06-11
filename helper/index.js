@@ -1,7 +1,7 @@
 const update = (params, sql) =>  {
   let keys = Object.keys(params)
   let arr = []
-  keys.forEach((key ,index) => {
+  keys.forEach((key) => {
     if (key) {
       sql = sql + `${key} = ? ,`
       arr.push(params[key])

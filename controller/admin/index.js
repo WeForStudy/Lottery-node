@@ -1,10 +1,7 @@
 const pool = require('../../lib/mysql')
-const { NtN } = require('../../helper')
+const { NtNUpdate } = require('../../helper')
+const TYPES = require('../../enum')
 const { query } = pool
-const TYPES = {
-  deled: 404,
-
-}
 // 新添用户
 const add = (val) => {
   const { account, phone, password, name, creator } = val
@@ -23,7 +20,7 @@ const update = (val) => {
 
 // 查询管理员
 const list = val => {
-  const sql = 'select * from lottery_admin where type != ?'
+  const sql = 'select * from lottery_admin where status != ?'
   return query(sql, [ TYPES.deled ])
 }
 
@@ -38,4 +35,5 @@ module.exports = {
   add,
   list,
   update,
+  del,
 }
