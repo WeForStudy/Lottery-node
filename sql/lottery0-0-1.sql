@@ -9,7 +9,7 @@
  Target Server Version : 80011
  File Encoding         : utf-8
 
- Date: 06/12/2018 15:51:58 PM
+ Date: 06/11/2018 15:21:21 PM
 */
 
 SET NAMES utf8;
@@ -62,7 +62,6 @@ CREATE TABLE `lottery_order` (
   `total_money` decimal(8,2) NOT NULL,
   `order_time` mediumtext NOT NULL,
   `status` int(11) DEFAULT NULL,
-  `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -80,39 +79,6 @@ CREATE TABLE `lottery_shop` (
   `create_time` mediumtext,
   `business_no` varchar(13) NOT NULL,
   `status` int(11) DEFAULT NULL,
-  `extra_info` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
---  Table structure for `lottery_ticket`
--- ----------------------------
-DROP TABLE IF EXISTS `lottery_ticket`;
-CREATE TABLE `lottery_ticket` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '期数编号',
-  `type_id` int(11) NOT NULL COMMENT '类型编号',
-  `period` int(11) NOT NULL COMMENT '第几期',
-  `boom_time` bigint(20) NOT NULL COMMENT '开奖时间',
-  `create_time` bigint(20) NOT NULL,
-  `boom_number` varchar(500) NOT NULL COMMENT '获奖号码',
-  `winning_number` varchar(500) DEFAULT NULL COMMENT '获奖号码',
-  `prize` decimal(10,0) NOT NULL DEFAULT '0' COMMENT '奖金池',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '期号开奖状态',
-  `extra_info` varchar(500) NOT NULL DEFAULT '' COMMENT '补充的信息',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
---  Table structure for `lottery_type`
--- ----------------------------
-DROP TABLE IF EXISTS `lottery_type`;
-CREATE TABLE `lottery_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
-  `name` varchar(120) NOT NULL COMMENT '名称',
-  `create_time` bigint(20) NOT NULL COMMENT '创建时间',
-  `creator` varchar(60) NOT NULL COMMENT '创建人',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '类型状态（是否已被弃用）',
-  `extra_info` varchar(200) NOT NULL DEFAULT ' ' COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -125,12 +91,10 @@ CREATE TABLE `lottery_user` (
   `username` varchar(50) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `create_time` bigint(20) NOT NULL,
-  `last_bet_time` bigint(20) DEFAULT NULL,
-  `car_no` varchar(18) DEFAULT NULL,
+  `last_bet_time` mediumtext,
+  `car_no` varchar(18) NOT NULL,
   `balance` decimal(8,2) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
