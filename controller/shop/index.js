@@ -24,11 +24,11 @@ const list = val => {
   return query(sql, [ STATUS.DEL ])
 }
 
-// 根据商家Id查询
+// 根据Id查询
 const one = val => {
-  const { shopId } = val
-  const sql = 'select * from lottery_shop where status != ? and shop_id = ?'
-  return query(sql, [ STATUS.DEL, shopId ])
+  const { id } = val
+  const sql = 'select * from lottery_shop where status != ? and id = ?'
+  return query(sql, [ STATUS.DEL, id ])
 }
 
 
@@ -43,7 +43,6 @@ module.exports = {
   add,
   list,
   one,
-  listb,
   update,
   del,
 }

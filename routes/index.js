@@ -14,4 +14,7 @@ module.exports = (config => {
   'admin',
   'user',
   'order',
+  'shop',
+  'ticket',
+  'type',
 ])
