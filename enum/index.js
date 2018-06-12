@@ -1,4 +1,4 @@
 module.exports = {
-  deled: 404,
-  normal: 0,
+  DEL: 404,
+  NORMAL: 0,
 }

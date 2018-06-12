@@ -1,12 +1,15 @@
 const pool = require('../../lib/mysql')
 const { NtNUpdate } = require('../../helper')
-const TYPES = require('../../enum')
+const STATUS = require('../../enum')
+const TYPES = {
+  NORMAL: 0,
+}
 const { query } = pool
 // 新添用户
 const add = (val) => {
   const { account, phone, password, name, creator } = val
-  let _sql = 'insert into lottery_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,1,0);'
-  return query( _sql, [ account, phone, password, creator, name] )
+  let _sql = 'insert into lottery_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,?,?);'
+  return query( _sql, [ account, phone, password, creator, name,TYPES.NORMAL,STATUS.NORMAL] )
 }
 
 // 更改管理员
@@ -21,14 +24,14 @@ const update = (val) => {
 // 查询管理员
 const list = val => {
   const sql = 'select * from lottery_admin where status != ?'
-  return query(sql, [ TYPES.deled ])
+  return query(sql, [ STATUS.DEL ])
 }
 
 // 删除管理员
 const del = val => {
   const { id } = val
   const sql = 'update lottery_admin set status = ? where id = ?'
-  return query(sql, [ TYPES.deled, id ])
+  return query(sql, [ STATUS.DEL, id ])
 }
 
 module.exports = {
