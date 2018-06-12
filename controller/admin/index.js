@@ -5,7 +5,7 @@ const TYPES = {
   NORMAL: 0,
 }
 const { query } = pool
-// 新添用户
+// 新添管理员
 const add = (val) => {
   const { account, phone, password, name, creator } = val
   let _sql = 'insert into lottery_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,?,?);'
