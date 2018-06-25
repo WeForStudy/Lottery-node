@@ -8,14 +8,20 @@ const { query } = pool
 // 新添管理员
 const add = (val) => {
   const { account, phone, password, name, creator } = val
-  let _sql = 'insert into lottery_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,?,?);'
+  const _sql = 'insert into lottery_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,?,?);'
   return query( _sql, [ account, phone, password, creator, name,TYPES.NORMAL,STATUS.NORMAL] )
+}
+
+const login = (val) => {
+  const { account, password } = val
+  const _sql = 'select * from lottery_admin where account = ? and password = ? and status = ?'
+  return query( _sql, [ account, password, STATUS.NORMAL ] )
 }
 
 // 更改管理员
 const update = (val) => {
   const { account, phone, password, name, type, id } = val
-  let _sql = 'update lottery_admin set '
+  const _sql = 'update lottery_admin set '
   const { sql, args } = NtNUpdate({ account, phone, password, name, type }, _sql)
   _sql = sql + 'where id = ?'
   return query( _sql, [...args, id] )
@@ -39,4 +45,5 @@ module.exports = {
   list,
   update,
   del,
+  login,
 }

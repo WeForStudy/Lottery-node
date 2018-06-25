@@ -1,26 +1,28 @@
-// const controller = require('../../controller/admin')
+const controller = require('../../controller/admin')
 const model = require('../model')
 const m  = model([
   'list',
   'add',
   'update',
-  'del'
+  'del',
 ], 'admin')
 
+
+const login = async ctx => {
+  let res;
+  try {
+    await controller.login().then(result => {
+      res = success(result)
+    })
+  } catch(err) {
+    res = failed(err)
+  }
+  ctx.body = res
+}
 module.exports = {
   ...m,
+  login,
 }
-// const list = async ctx => {
-//   let res;
-//   try {
-//     await controller.list().then(result => {
-//       res = success(result)
-//     })
-//   } catch(err) {
-//     res = failed(err)
-//   }
-//   ctx.body = res
-// }
 
 // const add = async ctx => {
 //   let res;
