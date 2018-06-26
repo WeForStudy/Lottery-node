@@ -1,10 +1,9 @@
 const config = {
   // 启动端口
   port: 1200,
-
   // 数据库配置
   database: {
-    DATABASE: 'lottery',
+    DATABASE: 'tour',
     USERNAME: 'root',
     PASSWORD: 'lotterygroup',
     PORT: '3306',
