@@ -29,7 +29,7 @@ app.use(session({
 // 配置跨域
 app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With')
-  ctx.set('Access-Control-Allow-Origin', 'http://localhost:8080');
+  ctx.set('Access-Control-Allow-Origin', 'http://localhost:9000');
   ctx.set('Access-Control-Allow-Methods', 'PUT,DELETE,POST,GET');
   ctx.set('Access-Control-Allow-Credentials', true);
   ctx.set('Access-Control-Max-Age', 3600 * 24);
