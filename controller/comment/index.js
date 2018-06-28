@@ -1,6 +1,6 @@
 const { query } = require('../../lib/mysql')
 const { NtNUpdate } = require('../../helper')
-const STATUS = require('../../enum')
+const { STATUS } = require('../../enum')
 
 // 新添评论类型
 const add = (val) => {
@@ -21,14 +21,14 @@ const update = (val) => {
 // 查询评论类型
 const list = val => {
   const sql = 'select * from tour_comment where status != ?'
-  return query(sql, [ STATUS.DEL ])
+  return query(sql, [ STATUS.DELED ])
 }
 
 // 根据Id查询
 const one = val => {
   const { shopId } = val
   const sql = 'select * from tour_comment where status != ? and id = ?'
-  return query(sql, [ STATUS.DEL, shopId ])
+  return query(sql, [ STATUS.DELED, shopId ])
 }
 
 
@@ -36,7 +36,7 @@ const one = val => {
 const del = val => {
   const { id } = val
   const sql = 'update tour_comment set status = ? where id = ?'
-  return query(sql, [ STATUS.DEL, id ])
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 module.exports = {

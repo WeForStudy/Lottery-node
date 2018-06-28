@@ -1,6 +1,6 @@
 const { query } = require('../../lib/mysql')
 const { NtNUpdate } = require('../../helper')
-const STATUS = require('../../enum')
+const { STATUS } = require('../../enum')
 
 // 新添向导
 const add = (val) => {
@@ -21,14 +21,14 @@ const update = (val) => {
 // 查询向导
 const list = val => {
   const sql = 'select * from tour_guider where status != ?'
-  return query(sql, [ STATUS.DEL ])
+  return query(sql, [ STATUS.DELED ])
 }
 
 // 根据Id查询
 const one = val => {
   const { id } = val
   const sql = 'select * from tour_guider where status != ? and id = ?'
-  return query(sql, [ STATUS.DEL, id ])
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 
@@ -36,7 +36,7 @@ const one = val => {
 const del = val => {
   const { id } = val
   const sql = 'update tour_guider set status = ? where id = ?'
-  return query(sql, [ STATUS.DEL, id ])
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 module.exports = {

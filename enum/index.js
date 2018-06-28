@@ -1,5 +1,7 @@
+const status = require('./status')
+const type = require('./status')
+
 module.exports = {
-  DEL: 404,
-  ABA: 111,
-  NORMAL: 0,
+  STATUS: status,
+  TYPES: type,
 }

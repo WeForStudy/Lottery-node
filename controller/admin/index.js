@@ -1,6 +1,6 @@
 const pool = require('../../lib/mysql')
 const { NtNUpdate } = require('../../helper')
-const STATUS = require('../../enum')
+const { STATUS } = require('../../enum')
 const TYPES = {
   NORMAL: 0,
 }
@@ -30,14 +30,14 @@ const update = (val) => {
 // 查询管理员
 const list = val => {
   const sql = 'select * from tour_admin where status != ?'
-  return query(sql, [ STATUS.DEL ])
+  return query(sql, [ STATUS.DELED ])
 }
 
 // 删除管理员
 const del = val => {
   const { id } = val
   const sql = 'update tour_admin set status = ? where id = ?'
-  return query(sql, [ STATUS.DEL, id ])
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 module.exports = {

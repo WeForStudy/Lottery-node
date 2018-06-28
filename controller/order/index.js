@@ -1,7 +1,7 @@
 const pool = require('../../lib/mysql')
 const { NtNUpdate } = require('../../helper')
 const { query } = pool
-const STATUS = require('../../enum')
+const { STATUS } = require('../../enum')
 
 // 新添订单
 const add = (val) => {
@@ -22,28 +22,28 @@ const update = (val) => {
 // 查询订单
 const list = val => {
   const sql = 'select * from tour_order where status != ?'
-  return query(sql, [ STATUS.DEL ])
+  return query(sql, [ STATUS.DELED ])
 }
 
 // 根据商家查订单
 const listb = val => {
   const { guiderId } = val
   const sql = 'select * from tour_order where status != ? and guider_id = ?'
-  return query(sql, [ STATUS.DEL, guiderId ])
+  return query(sql, [ STATUS.DELED, guiderId ])
 }
 
 // 根据用户查订单
 const listu = val => {
   const { userId } = val
   const sql = 'select * from tour_order where status != ? and user_id = ?'
-  return query(sql, [ STATUS.DEL, userId ])
+  return query(sql, [ STATUS.DELED, userId ])
 }
 
 // 删除订单
 const del = val => {
   const { id } = val
   const sql = 'update tour_order set status = ? where id = ?'
-  return query(sql, [ STATUS.DEL, id ])
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 module.exports = {
