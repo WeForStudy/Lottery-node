@@ -1,5 +1,10 @@
 const pojo = require('../../helper/pojo')
-const { success, failed } = pojo
+const { success, failed, successWithCode } = pojo
+const list = [
+  'del',
+  'add',
+  'update',
+]
 module.exports = (config, file) => {
   const controller = require(`../../controller/${file}`)
 	return config.reduce((copy, name) => {
@@ -8,6 +13,10 @@ module.exports = (config, file) => {
       try {
         const val = ctx.request.body
         await controller[name](val).then(result => {
+          if (list.indexOf(name) !== -1) {
+            res = successWithCode('操作成功')
+            return
+          }
           res = success(result)
         })
       } catch(err) {

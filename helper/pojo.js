@@ -11,8 +11,15 @@ const failed = (error) => {
     msg: error.message || error || '服务器异常'
   }
 }
+const successWithCode = msg => {
+  return {
+    retCode: 200,
+    msg,
+  }
+}
 
 module.exports = {
   success,
-  failed
+  failed,
+  successWithCode,
 }
